@@ -32,6 +32,7 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+      - 443:443
     volumes:
       - drupal-data:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
@@ -47,7 +48,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - drupal-data:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email ronald@localhost --agree-tos --no-eff-email --staging -d drupal9.ronaldpunt.nl -d www.drupal9.ronaldpunt.nl
+    command: certonly --webroot --webroot-path=/var/www/html --email ronald@drupal9.ronaldpunt.nl --agree-tos --no-eff-email --force-renewal -d drupal9.ronaldpunt.nl -d www.drupal9.ronaldpunt.nl
 
 networks:
   external:
